@@ -5,8 +5,14 @@ let cssThemes = [
 
 let pageTheme = "dark";
 
-// Read the localstorage
-// Read CSS themes
+
+
+/**
+ * Retrieve, assign, and return the latest stored CSS theme list from the browser localstorage
+ * @author BigfootDS
+ * 
+ * @returns String. Should be "light" or "dark"
+ */
 function getStoredCssThemes(){
     // Update the css theme array
     let rawJsonStringCssThemes = localStorage.getItem("cssThemes")
@@ -14,16 +20,19 @@ function getStoredCssThemes(){
     // return the updated data
     return cssThemes;
 }
+
+
 /**
- * Retrieve, assign, and return the latest stored CSS theme list from the browser localstorage
+ * Retrieve, assign, and return the latest stored page theme from the browser localstorage.
  * @author BigfootDS
- * 
- * @returns String. Should be "light" or "dark"
+ *
+ * @returns String. Should be "light" or "dark".
  */
 function getStoredPageTheme(){
     pageTheme = localStorage.getItem("pageTheme");
     return pageTheme;
 }
+
 
 // Create/update local storage
 function setCssThemesToStorage(){
@@ -35,14 +44,14 @@ function setPageThemeToStorage(){
 	localStorage.setItem("pageTheme", pageTheme);
 }
 
+
 // Check if data exists
 // if it does, retrieve it,
 // else, set default variaqbles to localstorage
-
-if (localStorage.getItem("pageTheme") && localStorage.getItem("cssThemes").length >0){
+if (localStorage.getItem("pageTheme") && localStorage.getItem("cssThemes")?.length > 0){
     getStoredCssThemes();
     getStoredPageTheme();
-} else{
+} else {
     setCssThemesToStorage();
     setPageThemeToStorage();
 }
