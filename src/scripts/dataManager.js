@@ -3,14 +3,14 @@ let cssThemes = [
 
 ];
 
-let pageTheme = "dark"
+let pageTheme = "dark";
 
 // Read the localstorage
 // Read CSS themes
 function getStoredCssThemes(){
     // Update the css theme array
     let rawJsonStringCssThemes = localStorage.getItem("cssThemes")
-    cssThemes = localStorage.getItem("cssThemes");
+    cssThemes = JSON.parse(rawJsonStringCssThemes);
     // return the updated data
     return cssThemes;
 }
@@ -27,10 +27,25 @@ function getStoredPageTheme(){
 
 // Create/update local storage
 function setCssThemesToStorage(){
-    let dataAsJsonString = JSON.stringify(cssThemes);
-    localStorage.setItem("cssThemes", dataAsJsonString);
+	let dataAsJsonString = JSON.stringify(cssThemes);
+	localStorage.setItem("cssThemes", dataAsJsonString);
 }
 
+function setPageThemeToStorage(){
+	localStorage.setItem("pageTheme", pageTheme);
+}
+
+// Check if data exists
+// if it does, retrieve it,
+// else, set default variaqbles to localstorage
+
+if (localStorage.getItem("pageTheme") && localStorage.getItem("cssThemes").length >0){
+    getStoredCssThemes();
+    getStoredPageTheme();
+} else{
+    setCssThemesToStorage();
+    setPageThemeToStorage();
+}
 
 
 
