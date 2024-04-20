@@ -1,0 +1,25 @@
+body {
+    background: linear-gradient(to right, var(--theme-950), var(--theme-800));
+    color: var(--theme-50);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+/* Mobile-first design */
+.row {
+    width: 100dvw;
+}
+
+.column {
+    width: 100%;
+    background-color: var(--theme-800);
+}
+
+.themeToggle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
